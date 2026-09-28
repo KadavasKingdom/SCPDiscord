@@ -68,6 +68,7 @@
     <ItemGroup>
       <PackageReference Include="Google.Protobuf" Version="3.33.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+      <PackageReference Include="Northwood.LabAPI" Version="1.1.7" />
     </ItemGroup>
 
     <ItemGroup>
@@ -84,4 +85,13 @@
         <EmbeddedResource Include="Languages/simplified-chinese.yml" />
         <EmbeddedResource Include="Languages/ukrainian.yml" />
     </ItemGroup>
+	<!-- Remove unnessessary files in VS -->
+	<ItemGroup>
+		<None Remove=".*;*.md;LICENSE" />
+	</ItemGroup>
+
+	<Import Project="ReferencePaths.props.user" Condition="Exists('ReferencePaths.props.user')" />
+	<PropertyGroup>
+		<AssemblySearchPaths>$(AssemblySearchPaths);$(ReferencePath);../3rdparty</AssemblySearchPaths>
+	</PropertyGroup>
 </Project>
